@@ -34,7 +34,6 @@ overwatch_system:
 ## Translations
 ```yaml
 overwatch_system:
-# The language of the plugin
   none: 'None'
   moderation_system: 'Moderation System'
   nickname: 'Nickname'
