@@ -7,7 +7,8 @@ A comprehensive overwatch system plugin for SCP: Secret Laboratory servers.
 
 ## Requirements
 - EXILED Framework v9.5.1 or higher
-- [UncomplicatedCustomRoles](https://github.com/UncomplicatedCustomServer/UncomplicatedCustomRoles) **>= 6.0.0**  
+- [UncomplicatedCustomRoles](https://github.com/UncomplicatedCustomServer/UncomplicatedCustomRoles) **>= 6.0.0**
+- Newtonsoft.Json
 
 ## Installation
 1. Download the latest release from the [releases page](https://github.com/DiabeloDev/OverwatchSystem/releases/latest)
