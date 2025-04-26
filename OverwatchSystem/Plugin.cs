@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Exiled.API.Enums;
 using Exiled.API.Features;
+using Exiled.Loader;
+using MEC;
 
 namespace OverwatchSystem
 {
@@ -15,6 +19,7 @@ namespace OverwatchSystem
         public override void OnEnabled()
         {
             Instance = this;
+            Dependency();
             Overwatch.Register();
             base.OnEnabled();
         }
@@ -25,6 +30,12 @@ namespace OverwatchSystem
             Overwatch.Unregister();
             base.OnDisabled();
             
+        }
+        private bool CheckForDependency() => Loader.Dependencies.Any(assembly => assembly.GetName().Name == "Newtonsoft.Json");
+        public void Dependency()
+        {
+            if (!CheckForDependency())
+                Timing.CallContinuously(20f, () => Log.Error("You don't have the dependency Newtonsoft.Json installed!\nPlease install it AS SOON AS POSSIBLE!"));
         }
     }
 }

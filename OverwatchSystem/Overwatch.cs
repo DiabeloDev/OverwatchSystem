@@ -78,7 +78,6 @@ namespace OverwatchSystem
                     {
                         if (hint != null)
                         {
-                            // Usuń wszystkie aktywne podpowiedzi
                             foreach (var player in Player.List)
                             {
                                 if (player != null && player.IsConnected)
@@ -360,7 +359,7 @@ namespace OverwatchSystem
                         if (item == null)
                             continue;
 
-                        string icon = "📦"; // Domyślna ikona
+                        string icon = "📦";
                         switch (item.Type)
                         {
                             case ItemType.GunCOM15:
@@ -375,7 +374,7 @@ namespace OverwatchSystem
                             case ItemType.GunFSP9:
                             case ItemType.GunShotgun:
                             case ItemType.GunCom45:
-                                icon = "🔫"; // Broń palna
+                                icon = "🔫";
                                 break;
                             case ItemType.KeycardScientist:
                             case ItemType.KeycardChaosInsurgency:
@@ -389,17 +388,17 @@ namespace OverwatchSystem
                             case ItemType.KeycardJanitor:
                             case ItemType.KeycardZoneManager:
                             case ItemType.KeycardResearchCoordinator:
-                                icon = "🔑"; // Karty dostępu
+                                icon = "🔑";
                                 break;
                             case ItemType.ArmorLight:
                             case ItemType.ArmorCombat:
                             case ItemType.ArmorHeavy:
-                                icon = "🎽"; // Kamizelka
+                                icon = "🎽";
                                 break;
                             case ItemType.Medkit:
                             case ItemType.Adrenaline:
                             case ItemType.Painkillers:
-                                icon = "💉"; // Apteczki i leki
+                                icon = "💉";
                                 break;
                             case ItemType.SCP018:
                             case ItemType.SCP207:
@@ -412,27 +411,27 @@ namespace OverwatchSystem
                             case ItemType.SCP2176:
                             case ItemType.AntiSCP207:
                             case ItemType.SCP1344:
-                                icon = "🔬"; // SCP
+                                icon = "🔬";
                                 break;
                             case ItemType.MicroHID:
                             case ItemType.ParticleDisruptor:
-                                icon = "⚡"; // MicroHID
+                                icon = "⚡";
                                 break;
                             case ItemType.GrenadeHE:
                             case ItemType.GrenadeFlash:
-                                icon = "💣"; //Grenade
+                                icon = "💣";
                                 break;
                             case ItemType.Radio:
-                                icon = "📻"; // Radio
+                                icon = "📻";
                                 break;
                             case ItemType.Flashlight:
-                                icon = "🔦"; // Latarka
+                                icon = "🔦";
                                 break;
                             case ItemType.Jailbird:
-                                icon = "🔨"; // Jailbird
+                                icon = "🔨";
                                 break;
                             case ItemType.SCP500:
-                                icon = "💊"; // SCP-500
+                                icon = "💊";
                                 break;
                         }
                         // --- User's Proposed Logic ---
@@ -467,8 +466,7 @@ namespace OverwatchSystem
         private static string GetCustomItemAdditionalInfo(CustomItem customItem, Item item)
         {
             if (customItem == null) return "";
-
-            // Sprawdzenie, czy customItem implementuje ICustomItemInfoProvider
+            
             if (customItem is ICustomItemInfoProvider provider)
             {
                 string info = provider.AdditionalInfo;
