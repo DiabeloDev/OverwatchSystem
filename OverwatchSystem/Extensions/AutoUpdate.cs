@@ -38,14 +38,6 @@ namespace OverwatchSystem.Extensions
             if (!Plugin.Instance.Config.EnableLoggingAutoUpdate)
                 return;
 
-            string content = level switch
-            {
-                LogLevel.Info => $"[INFO] {message}",
-                LogLevel.Warn => $"[WARNING] {message}",
-                LogLevel.Error => $"[ERROR] {message}",
-                _ => message
-            };
-
             switch (level)
             {
                 case LogLevel.Info:
@@ -69,7 +61,7 @@ namespace OverwatchSystem.Extensions
                 var response = await HttpClient.GetAsync(RepositoryUrl);
                 if (!response.IsSuccessStatusCode)
                 {
-                    var errorMessage = $"Failed to check for updates. Status: {response.StatusCode} ({response.ReasonPhrase})";
+                    var errorMessage = $"Failed to check for updates. Status: {response.StatusCode}";
                     switch (response.StatusCode)
                     {
                         case HttpStatusCode.NotFound:
@@ -111,7 +103,8 @@ namespace OverwatchSystem.Extensions
                 {
                     var updateLines = new[]
                     {
-                        $"New version available: {latestVersion} (current: {CurrentVersion})",
+                        $"New version available: {latestVersion}",
+                        $"Current version: {CurrentVersion}",
                         autoUpdate
                             ? "Automatic update is enabled. Starting update process..."
                             : "Automatic update is disabled. Please download and install the update manually.",
@@ -247,7 +240,6 @@ namespace OverwatchSystem.Extensions
             Log($"╚{new string('═', maxWidth + 2)}╝", level);
         }
     }
-
     internal enum LogLevel
     {
         Info,
