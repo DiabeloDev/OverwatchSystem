@@ -158,6 +158,7 @@ namespace OverwatchSystem
                 Log.Error($"Error in OnSpectating: {ex}");
             }
         }
+
         private static void OnPlayerLeft(DestroyingEventArgs ev)
         {
             try
@@ -175,6 +176,7 @@ namespace OverwatchSystem
                 Log.Error($"Error in OnPlayerLeft: {ex}");
             }
         }
+
         private static void OnRoleChanged(ChangingRoleEventArgs ev)
         {
             try
@@ -195,6 +197,7 @@ namespace OverwatchSystem
                 Log.Error($"Error in OnRoleChanged: {ex}");
             }
         }
+
         private static void RemoveHint(Player player)
         {
             try
@@ -224,6 +227,7 @@ namespace OverwatchSystem
                 Log.Error($"Error in RemoveHint: {ex}");
             }
         }
+
         private static IEnumerator<float> ShowOverwatch(Player player, DynamicHint hint, Player perms)
         {
             if (player == null || hint == null || perms == null)
@@ -231,6 +235,9 @@ namespace OverwatchSystem
                 Log.Warn("ShowWarns: Player, hint or permissions is null");
                 yield break;
             }
+
+            var translations = Plugin.Instance.Translation;
+
             while (player.IsConnected && player.Role.Type == RoleTypeId.Overwatch)
             {
                 try
@@ -247,9 +254,9 @@ namespace OverwatchSystem
                         {
                             int Id = target.Id;
                             string nickname = target.Nickname;
-                            string nickname_rp = string.IsNullOrEmpty(target.CustomName) ? "Brak" : target.CustomName;
-                            string cinfo = string.IsNullOrEmpty(target.CustomInfo) ? "Brak" : target.CustomInfo;
-                            string custom_rola = "Brak";
+                            string nickname_rp = string.IsNullOrEmpty(target.CustomName) ? translations.None : target.CustomName;
+                            string cinfo = string.IsNullOrEmpty(target.CustomInfo) ? translations.None : target.CustomInfo;
+                            string custom_rola = translations.None;
                             if (target.TryGetSummonedInstance(out SummonedCustomRole role))
                             {
                                 custom_rola = role.Role.Name;
@@ -285,17 +292,17 @@ namespace OverwatchSystem
                             string rola_color_hex = $"#{(byte)(rola_color.r * 255):X2}{(byte)(rola_color.g * 255):X2}{(byte)(rola_color.b * 255):X2}";
                             
                             StringBuilder sb = new StringBuilder();
-                            sb.AppendLine($"<align=left><color=#4682B4><b> System Moderacji</b></color>\n");
-                            sb.AppendLine($"<color=#D3D3D3>👤</color><color=#A9A9A9>Nick:</color> <b><color=#FFFFFF>{nickname}</color></b>");
-                            if (!string.IsNullOrWhiteSpace(nickname_rp) && nickname_rp != "Brak" && nickname_rp != nickname)
-                                sb.AppendLine($"<color=#D8BFD8>🎭</color><color=#A9A9A9>RP:</color> <color=#F0F0F0>{nickname_rp}</color>");
-                            if (!string.IsNullOrWhiteSpace(cinfo) && cinfo != "Brak")
-                                sb.AppendLine($"<color=#A9A9A9>🔎</color><color=#A9A9A9>CInfo:</color> <color=#F0F0F0>{cinfo}</color>");
-                            sb.AppendLine($" <color=#FFFFE0>🆔</color> <color=#A9A9A9>ID:</color> <color=#FFFFFF>{Id}</color>");
-                            sb.AppendLine($"<color=#FFFFE0>\ud83d\udc68</color><color=#A9A9A9>UCR:</color> <color=#FFFFFF>{custom_rola}</color>");
-                            sb.AppendLine($" <color={rola_color_hex}>⚜️ Rola: {rola}</color>");
-                            sb.AppendLine($" <color=#FF6347>⚠️</color><color=#A9A9A9>Ostatnia Pomoc:</color>  <color=#FFA500><b><i>SOON</i></b></color>");
-                            sb.AppendLine($"🎽<color=#A9A9A9>Inventory:</color>");
+                            sb.AppendLine($"<align=left><color=#4682B4><b>{translations.ModerationSystem}</b></color>\n");
+                            sb.AppendLine($"<color=#D3D3D3>👤</color><color=#A9A9A9>{translations.Nickname}:</color> <b><color=#FFFFFF>{nickname}</color></b>");
+                            if (!string.IsNullOrWhiteSpace(nickname_rp) && nickname_rp != translations.None && nickname_rp != nickname)
+                                sb.AppendLine($"<color=#D8BFD8>🎭</color><color=#A9A9A9>{translations.Roleplay}:</color> <color=#F0F0F0>{nickname_rp}</color>");
+                            if (!string.IsNullOrWhiteSpace(cinfo) && cinfo != translations.None)
+                                sb.AppendLine($"<color=#A9A9A9>🔎</color><color=#A9A9A9>{translations.CustomInfo}:</color> <color=#F0F0F0>{cinfo}</color>");
+                            sb.AppendLine($" <color=#FFFFE0>🆔</color> <color=#A9A9A9>{translations.Id}:</color> <color=#FFFFFF>{Id}</color>");
+                            sb.AppendLine($"<color=#FFFFE0>\ud83d\udc68</color><color=#A9A9A9>{translations.CustomRole}:</color> <color=#FFFFFF>{custom_rola}</color>");
+                            sb.AppendLine($" <color={rola_color_hex}>⚜️ {translations.Role}: {rola}</color>");
+                            sb.AppendLine($" <color=#FF6347>⚠️</color><color=#A9A9A9>{translations.LastHelp}:</color>  <color=#FFA500><b><i>SOON</i></b></color>");
+                            sb.AppendLine($"🎽<color=#A9A9A9>{translations.Inventory}:</color>");
                             ShowInventory(target, sb);
                             sb.AppendLine("</align>");
 
@@ -306,7 +313,7 @@ namespace OverwatchSystem
                         }
                         else
                         {
-                            hint.Text = "<align=left><color=#FF0000><b>Brak uprawnień!</b></color>\n<color=#FFFFFF>Nie masz uprawnień do korzystania z systemu moderacji.</color></align>";
+                            hint.Text = $"<align=left><color=#FF0000><b>{translations.NoPermissions}</b></color>\n<color=#FFFFFF>{translations.NoPermissionsDescription}</color></align>";
                             hint.TargetX = 50;
                             hint.TargetY = 950;
                             hint.FontSize = 20;
@@ -330,6 +337,7 @@ namespace OverwatchSystem
                 Log.Error($"Error in ShowWarns cleanup: {ex}");
             }
         }
+
         public static void ShowInventory(Player player, StringBuilder sb)
         {
             try
@@ -346,9 +354,11 @@ namespace OverwatchSystem
                     return;
                 }
 
+                var translations = Plugin.Instance.Translation;
+
                 if (player.Items == null || player.Items.Count == 0)
                 {
-                    sb.AppendLine("      <color=#808080><i>Empty</i></color>");
+                    sb.AppendLine($"      <color=#808080><i>{translations.Empty}</i></color>");
                     return;
                 }
 
@@ -434,7 +444,7 @@ namespace OverwatchSystem
                                 icon = "💊";
                                 break;
                         }
-                        // --- User's Proposed Logic ---
+
                         if (CustomItem.TryGet(item, out CustomItem customItem))
                         {
                             string customName = customItem.Name;
@@ -463,6 +473,7 @@ namespace OverwatchSystem
                 Log.Error($"Error in ShowInventory: {ex}");
             }
         }
+
         private static string GetCustomItemAdditionalInfo(CustomItem customItem, Item item)
         {
             if (customItem == null) return "";
@@ -475,9 +486,10 @@ namespace OverwatchSystem
 
             return "";
         }
+
         private static string GetItemNameWithDetails(Item item)
         {
-            if (item == null) return "Brak";
+            if (item == null) return Plugin.Instance.Translation.None;
 
             string baseName = item.Type.GetName();
 

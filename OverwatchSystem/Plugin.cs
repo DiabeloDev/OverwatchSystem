@@ -4,7 +4,7 @@ using Exiled.API.Features;
 
 namespace OverwatchSystem
 {
-    public class Plugin : Plugin<Config>
+    public class Plugin : Plugin<Config, Translations>
     {
         public override string Author { get; } = ".Diabelo";
         public override string Name { get; } = "OverwatchSystem";

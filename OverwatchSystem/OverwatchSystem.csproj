@@ -131,6 +131,7 @@
         <Compile Include="ICustomItemInfoProvider.cs" />
         <Compile Include="Overwatch.cs" />
         <Compile Include="Plugin.cs" />
+	    <Compile Include="Translations.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
