@@ -5,8 +5,6 @@ namespace OverwatchSystem
 {
     public class Translations : ITranslation
     {
-        [Description("The language of the plugin")]
-        public string Language { get; set; } = "English";
         public string None { get; set; } = "None";
         public string ModerationSystem { get; set; } = "Moderation System";
         public string Nickname { get; set; } = "Nickname";

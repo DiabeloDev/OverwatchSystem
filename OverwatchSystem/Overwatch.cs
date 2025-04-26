@@ -261,32 +261,7 @@ namespace OverwatchSystem
                             {
                                 custom_rola = role.Role.Name;
                             }
-                            
-                            Dictionary<RoleTypeId, string> roleTranslations = new()
-                            {
-                                { RoleTypeId.ClassD, "Klasa-D" },
-                                { RoleTypeId.Scientist, "Naukowiec" },
-                                { RoleTypeId.FacilityGuard, "Ochroniarz" },
-                                { RoleTypeId.ChaosConscript, "Poborowy Chaosu" },
-                                { RoleTypeId.ChaosMarauder, "Maruder Chaosu" },
-                                { RoleTypeId.ChaosRepressor, "Represor Chaosu" },
-                                { RoleTypeId.ChaosRifleman, "Strzelec Chaosu" },
-                                { RoleTypeId.NtfPrivate, "Szeregowy NTF" },
-                                { RoleTypeId.NtfSergeant, "Sierżant NTF" },
-                                { RoleTypeId.NtfCaptain, "Kapitan NTF" },
-                                { RoleTypeId.NtfSpecialist, "Specjalista NTF" },
-                                { RoleTypeId.Scp173, "SCP-173" },
-                                { RoleTypeId.Scp106, "SCP-106" },
-                                { RoleTypeId.Scp049, "SCP-049" },
-                                { RoleTypeId.Scp0492, "SCP-049-2" },
-                                { RoleTypeId.Scp096, "SCP-096" },
-                                { RoleTypeId.Scp939, "SCP-939" },
-                                { RoleTypeId.Scp079, "SCP-079" },
-                                { RoleTypeId.Tutorial, "Samouczek" },
-                            };
-
-                            RoleTypeId originalRole = target.Role.Type;
-                            string rola = roleTranslations.ContainsKey(originalRole) ? roleTranslations[originalRole] : originalRole.ToString();
+                            RoleTypeId rola = target.Role.Type;
                             
                             Color rola_color = target.Role.Color;
                             string rola_color_hex = $"#{(byte)(rola_color.r * 255):X2}{(byte)(rola_color.g * 255):X2}{(byte)(rola_color.b * 255):X2}";
@@ -298,7 +273,7 @@ namespace OverwatchSystem
                                 sb.AppendLine($"<color=#D8BFD8>🎭</color><color=#A9A9A9>{translations.Roleplay}:</color> <color=#F0F0F0>{nickname_rp}</color>");
                             if (!string.IsNullOrWhiteSpace(cinfo) && cinfo != translations.None)
                                 sb.AppendLine($"<color=#A9A9A9>🔎</color><color=#A9A9A9>{translations.CustomInfo}:</color> <color=#F0F0F0>{cinfo}</color>");
-                            sb.AppendLine($" <color=#FFFFE0>🆔</color> <color=#A9A9A9>{translations.Id}:</color> <color=#FFFFFF>{Id}</color>");
+                            sb.AppendLine($" <color=#FFFFE0>🆔</color><color=#A9A9A9>{translations.Id}:</color> <color=#FFFFFF>{Id}</color>");
                             sb.AppendLine($"<color=#FFFFE0>\ud83d\udc68</color><color=#A9A9A9>{translations.CustomRole}:</color> <color=#FFFFFF>{custom_rola}</color>");
                             sb.AppendLine($" <color={rola_color_hex}>⚜️ {translations.Role}: {rola}</color>");
                             sb.AppendLine($"🎽<color=#A9A9A9>{translations.Inventory}:</color>");
