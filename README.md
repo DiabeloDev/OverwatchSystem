@@ -30,8 +30,8 @@ overwatch_system:
   enable_logging_auto_update: true
   enable_backup: false
 ```
-## Trans
-'''yaml
+## Translations
+```yaml
 overwatch_system:
 # The language of the plugin
   language: 'English'
@@ -48,7 +48,7 @@ overwatch_system:
   empty: 'Empty'
   no_permissions: 'No permissions!'
   no_permissions_description: 'You don''t have permissions to use the moderation system.'
-'''
+```
 
 ## Support
 For support, please:
