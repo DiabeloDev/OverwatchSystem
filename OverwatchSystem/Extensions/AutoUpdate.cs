@@ -1,16 +1,18 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Exiled.API.Features;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace OverwatchSystem.Extensions
 {
     public static class UpdateChecker
     {
-        private static readonly string RepositoryUrl = "https://api.github.com/repos/DiabeloDev/OverwatchSystem/releases/latest";
-        private static readonly string PluginPath = Path.Combine(Paths.Plugins, "OverwatchSystem.dll");
+        private static readonly string RepositoryUrl = "https://api.github.com/repos/Vretu-Dev/UsefulHints/releases/latest";
+        private static readonly string PluginPath = Path.Combine(Paths.Plugins, "UsefulHints.dll");
         private static readonly string CurrentVersion = Plugin.Instance.Version.ToString();
         private static readonly HttpClient HttpClient = new HttpClient();
         
@@ -36,6 +38,14 @@ namespace OverwatchSystem.Extensions
             if (!Plugin.Instance.Config.EnableLoggingAutoUpdate)
                 return;
 
+            string content = level switch
+            {
+                LogLevel.Info => $"[INFO] {message}",
+                LogLevel.Warn => $"[WARNING] {message}",
+                LogLevel.Error => $"[ERROR] {message}",
+                _ => message
+            };
+
             switch (level)
             {
                 case LogLevel.Info:
@@ -54,46 +64,91 @@ namespace OverwatchSystem.Extensions
         {
             try
             {
+                Log("Initiating update check...", LogLevel.Info);
+                
                 var response = await HttpClient.GetAsync(RepositoryUrl);
                 if (!response.IsSuccessStatusCode)
                 {
-                    Log($"Failed to check for updates: {response.StatusCode} - {response.ReasonPhrase}", LogLevel.Error);
+                    var errorMessage = $"Failed to check for updates. Status: {response.StatusCode} ({response.ReasonPhrase})";
+                    switch (response.StatusCode)
+                    {
+                        case HttpStatusCode.NotFound:
+                            errorMessage += " - Repository not found. Please check if the repository URL is correct.";
+                            break;
+                        case HttpStatusCode.RequestEntityTooLarge:
+                            errorMessage += " - Request too large. Please check your connection.";
+                            break;
+                        case HttpStatusCode.Unauthorized:
+                            errorMessage += " - Unauthorized access. Please check your credentials.";
+                            break;
+                        case HttpStatusCode.Forbidden:
+                            errorMessage += " - Access forbidden. Please check your permissions.";
+                            break;
+                        case HttpStatusCode.ServiceUnavailable:
+                            errorMessage += " - GitHub service is temporarily unavailable. Please try again later.";
+                            break;
+                        default:
+                            errorMessage += " - Please check your internet connection and try again.";
+                            break;
+                    }
+                    Log(errorMessage, LogLevel.Error);
                     return;
                 }
 
                 var content = await response.Content.ReadAsStringAsync();
+                Log("Successfully retrieved release information", LogLevel.Info);
+
                 var latestVersion = ExtractLatestVersion(content);
                 var downloadUrl = ExtractDownloadUrl(content);
 
                 if (latestVersion == null || downloadUrl == null)
                 {
-                    Log("Failed to parse update information.", LogLevel.Error);
+                    Log("Failed to parse update information. Please check if the release format is correct.", LogLevel.Error);
                     return;
                 }
 
                 if (IsNewerVersion(CurrentVersion, latestVersion))
                 {
-                    Log($"A new version is available: {latestVersion} (current: {CurrentVersion})", LogLevel.Warn);
+                    var updateLines = new[]
+                    {
+                        $"New version available: {latestVersion} (current: {CurrentVersion})",
+                        autoUpdate
+                            ? "Automatic update is enabled. Starting update process..."
+                            : "Automatic update is disabled. Please download and install the update manually.",
+                        $"Download URL: {downloadUrl}"
+                    };
+                    LogInBox(updateLines, LogLevel.Warn);
 
                     if (autoUpdate)
                     {
-                        Log("Automatic update is enabled. Downloading and applying the update...", LogLevel.Info);
                         await UpdatePluginAsync(downloadUrl);
-                        Log("Plugin updated successfully. Please restart the server to apply changes.", LogLevel.Info);
-                    }
-                    else
-                    {
-                        Log("Automatic update is disabled. Please download the update manually.", LogLevel.Warn);
+                        Log("Update completed successfully. Please restart the server to apply changes.", LogLevel.Info);
                     }
                 }
                 else
                 {
-                    Log("You are using the latest version.", LogLevel.Info);
+                    Log("You are using the latest version. No update needed.", LogLevel.Info);
                 }
+            }
+            catch (HttpRequestException ex)
+            {
+                Log($"Network error while checking for updates: {ex.Message}", LogLevel.Error);
+                if (ex.InnerException != null)
+                {
+                    Log($"Inner error: {ex.InnerException.Message}", LogLevel.Error);
+                }
+            }
+            catch (TaskCanceledException)
+            {
+                Log("Update check was cancelled due to timeout", LogLevel.Error);
             }
             catch (Exception ex)
             {
-                Log($"Error while checking for updates: {ex.Message}", LogLevel.Error);
+                Log($"Unexpected error while checking for updates: {ex.Message}", LogLevel.Error);
+                if (ex.InnerException != null)
+                {
+                    Log($"Inner error: {ex.InnerException.Message}", LogLevel.Error);
+                }
             }
         }
 
@@ -177,6 +232,19 @@ namespace OverwatchSystem.Extensions
             }
 
             File.WriteAllBytes(PluginPath, pluginData);
+        }
+
+        private static void LogInBox(string[] lines, LogLevel level)
+        {
+            int maxWidth = lines.Max(line => line.Length);
+            string horizontalBorder = $"╔{new string('═', maxWidth + 2)}╗";
+
+            Log(horizontalBorder, level);
+            foreach (var line in lines)
+            {
+                Log($"║ {line.PadRight(maxWidth)} ║", level);
+            }
+            Log($"╚{new string('═', maxWidth + 2)}╝", level);
         }
     }
 
