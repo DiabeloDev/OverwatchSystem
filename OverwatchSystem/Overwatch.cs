@@ -301,7 +301,6 @@ namespace OverwatchSystem
                             sb.AppendLine($" <color=#FFFFE0>🆔</color> <color=#A9A9A9>{translations.Id}:</color> <color=#FFFFFF>{Id}</color>");
                             sb.AppendLine($"<color=#FFFFE0>\ud83d\udc68</color><color=#A9A9A9>{translations.CustomRole}:</color> <color=#FFFFFF>{custom_rola}</color>");
                             sb.AppendLine($" <color={rola_color_hex}>⚜️ {translations.Role}: {rola}</color>");
-                            sb.AppendLine($" <color=#FF6347>⚠️</color><color=#A9A9A9>{translations.LastHelp}:</color>  <color=#FFA500><b><i>SOON</i></b></color>");
                             sb.AppendLine($"🎽<color=#A9A9A9>{translations.Inventory}:</color>");
                             ShowInventory(target, sb);
                             sb.AppendLine("</align>");
