@@ -58,7 +58,7 @@ public class Test : CustomItem, ICustomItemInfoProvider
 
 ## Support
 For support, please:
-- Open an issue on the [GitHub repository](https://github.com/DiabeloDev/OverwatchSystem/issues)
+- [Open an issue on the](https://github.com/DiabeloDev/OverwatchSystem/issues)
 - Contact the author directly
 
 ## License
