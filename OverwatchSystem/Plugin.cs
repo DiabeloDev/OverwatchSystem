@@ -19,7 +19,6 @@ namespace OverwatchSystem
             Overwatch.Register();
             base.OnEnabled();
         }
-
         public override void OnDisabled()
         {
             Instance = null;
