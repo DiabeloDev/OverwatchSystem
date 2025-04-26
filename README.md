@@ -31,6 +31,25 @@ overwatch_system:
   enable_backup: false
 ```
 
+## Translations
+```yaml
+overwatch_system:
+# The language of the plugin
+  none: 'None'
+  moderation_system: 'Moderation System'
+  nickname: 'Nickname'
+  roleplay: 'RP'
+  custom_info: 'Custom Info'
+  id: 'ID'
+  custom_role: 'Custom Role'
+  role: 'Role'
+  last_help: 'Last Help'
+  inventory: 'Inventory'
+  empty: 'Empty'
+  no_permissions: 'No permissions!'
+  no_permissions_description: 'You don''t have permissions to use the moderation system.'
+```
+
 ## Adding ICustomItemInfoProvider to Custom Items
 To add custom item information to your items, implement the `ICustomItemInfoProvider` interface. Here's a complete example:
 
@@ -46,26 +65,6 @@ public class Test : CustomItem, ICustomItemInfoProvider
     public string CustomIcon { get; set; } = "⚔️";
     public override SpawnProperties SpawnProperties { get; set; } = null;
 }
-```
-
-## Translations
-```yaml
-overwatch_system:
-# The language of the plugin
-  language: 'English'
-  none: 'None'
-  moderation_system: 'Moderation System'
-  nickname: 'Nickname'
-  roleplay: 'RP'
-  custom_info: 'Custom Info'
-  id: 'ID'
-  custom_role: 'Custom Role'
-  role: 'Role'
-  last_help: 'Last Help'
-  inventory: 'Inventory'
-  empty: 'Empty'
-  no_permissions: 'No permissions!'
-  no_permissions_description: 'You don''t have permissions to use the moderation system.'
 ```
 
 ## Support
