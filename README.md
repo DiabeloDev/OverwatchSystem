@@ -35,7 +35,7 @@ overwatch_system:
 ```yaml
 overwatch_system:
   none: 'None'
-  moderation_system: 'Moderation System'
+  overwatch_system: 'Overwatch System'
   nickname: 'Nickname'
   roleplay: 'RP'
   custom_info: 'Custom Info'
