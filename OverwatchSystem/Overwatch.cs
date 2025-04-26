@@ -9,7 +9,6 @@ using Exiled.CustomItems.API.Features;
 using HintServiceMeow.Core.Models.Hints;
 using HintServiceMeow.Core.Utilities;
 using InventorySystem.Items;
-using InventorySystem.Items.Usables;
 using PlayerRoles;
 using UncomplicatedCustomRoles.API.Features;
 using UncomplicatedCustomRoles.Extensions;
