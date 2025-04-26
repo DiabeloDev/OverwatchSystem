@@ -1,4 +1,3 @@
-[![downloads](https://img.shields.io/github/downloads/DiabeloDev/OverwatchSystem/total?style=for-the-badge&logo=icloud&color=%233A6D8C)](https://github.com/DiabeloDev/OverwatchSystem/releases/latest)
 ![Latest](https://img.shields.io/github/v/release/DiabeloDev/OverwatchSystem?style=for-the-badge&label=Latest%20Release&color=%23D91656)
 
 # Overwatch System for EXILED
@@ -8,12 +7,6 @@ A comprehensive overwatch system plugin for SCP: Secret Laboratory servers.
 ## Requirements
 - EXILED Framework v9.5.1 or higher
 - [UncomplicatedCustomRoles](https://github.com/UncomplicatedCustomServer/UncomplicatedCustomRoles) **>= 6.0.0**  
-
-## Features
-- Advanced overwatch system implementation
-- Automatic update system with backup functionality
-- Configurable logging system
-- Customizable configuration options
 
 ## Installation
 1. Download the latest release from the [releases page](https://github.com/DiabeloDev/OverwatchSystem/releases/latest)
@@ -35,7 +28,7 @@ overwatch_system:
 ```yaml
 overwatch_system:
   none: 'None'
-  moderation_system: 'Moderation System'
+  overwatch_system: 'Overwatch System'
   nickname: 'Nickname'
   roleplay: 'RP'
   custom_info: 'Custom Info'
@@ -60,9 +53,12 @@ public class Test : CustomItem, ICustomItemInfoProvider
 }
 ```
 
+## Showcase
+![image](https://github.com/user-attachments/assets/1c7d48af-fc63-4e7b-955d-efb35d7a0362)
+
 ## Support
 For support, please:
-- Open an issue on the [GitHub repository](https://github.com/DiabeloDev/OverwatchSystem/issues)
+- [Open an issue on the](https://github.com/DiabeloDev/OverwatchSystem/issues)
 - Contact the author directly
 
 ## License
