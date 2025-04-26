@@ -12,10 +12,10 @@ namespace OverwatchSystem
         public override Version RequiredExiledVersion { get; } = new Version(9, 5, 1);
         public override PluginPriority Priority { get; } = PluginPriority.Higher;
         public static Plugin Instance { get; private set; }
-        public override void OnEnabled()
+        public async override void OnEnabled()
         {
             Instance = this;
-            Extensions.UpdateChecker.Run();
+            await Extensions.UpdateChecker.RunAsync();
             Overwatch.Register();
             base.OnEnabled();
         }
