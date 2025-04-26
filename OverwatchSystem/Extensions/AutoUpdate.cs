@@ -11,8 +11,8 @@ namespace OverwatchSystem.Extensions
 {
     public static class UpdateChecker
     {
-        private static readonly string RepositoryUrl = "https://api.github.com/repos/Vretu-Dev/UsefulHints/releases/latest";
-        private static readonly string PluginPath = Path.Combine(Paths.Plugins, "UsefulHints.dll");
+        private static readonly string RepositoryUrl = "https://api.github.com/repos/DiabeloDev/OverwatchSystem/releases/latest";
+        private static readonly string PluginPath = Path.Combine(Paths.Plugins, "OverwatchSystem.dll");
         private static readonly string CurrentVersion = Plugin.Instance.Version.ToString();
         private static readonly HttpClient HttpClient = new HttpClient();
         
