@@ -1,4 +1,3 @@
-[![downloads](https://img.shields.io/github/downloads/DiabeloDev/OverwatchSystem/total?style=for-the-badge&logo=icloud&color=%233A6D8C)](https://github.com/DiabeloDev/OverwatchSystem/releases/latest)
 ![Latest](https://img.shields.io/github/v/release/DiabeloDev/OverwatchSystem?style=for-the-badge&label=Latest%20Release&color=%23D91656)
 
 # Overwatch System for EXILED
