@@ -506,28 +506,6 @@ namespace OverwatchSystem
                 
                 return $"{baseName} <color=#C0C0C0>({battery}%)</color>";
             }
-            if (item.Type == ItemType.SCP268)
-            {
-                if (item.Base is Scp268 baseScp268)
-                {
-                    float remainingCooldown = baseScp268.RemainingCooldown;
-                    
-                    if (remainingCooldown > 0)
-                    {
-                        return $"{baseName} <color=#C0C0C0>(Cooldown: {remainingCooldown:F0}s)</color>";
-                    }
-                    
-                    float usetime = baseScp268.UseTime;
-                    if (usetime > 0f)
-                    {
-                        return $"{baseName} <color=#E0B0FF>(Aktywny, {usetime:F0}s)</color>";
-                    }
-                    if (remainingCooldown == 0f)
-                    {
-                        return $"{baseName} <color=#90EE90>(Gotowy)</color>";
-                    }
-                }
-            }
             return baseName;
         }
     }
