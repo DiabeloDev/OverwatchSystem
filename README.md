@@ -1,4 +1,4 @@
-[![downloads](https://img.shields.io/github/downloads/DiabeloDev/OverwatchSystem/total?style=for-the-badge&logo=icloud&color=%233A6D8C)](https://github.com/diabelo/OverwatchSystem/releases/latest)
+[![downloads](https://img.shields.io/github/downloads/DiabeloDev/OverwatchSystem/total?style=for-the-badge&logo=icloud&color=%233A6D8C)](https://github.com/DiabeloDev/OverwatchSystem/releases/latest)
 ![Latest](https://img.shields.io/github/v/release/DiabeloDev/OverwatchSystem?style=for-the-badge&label=Latest%20Release&color=%23D91656)
 
 # Overwatch System for EXILED
@@ -53,16 +53,10 @@ overwatch_system:
 To add custom item information to your items, implement the `ICustomItemInfoProvider` interface. Here's a complete example:
 
 ```cs
-[CustomItem(ItemType.GunCOM15)]
 public class Test : CustomItem, ICustomItemInfoProvider
 {
-    public override uint Id { get; set; } = 1;
-    public override string Name { get; set; } = "TEST";
-    public override string Description { get; set; } = "TEST";
-    public override float Weight { get; set; } = 1f;
     public string AdditionalInfo { get; set; } = "TEST";
     public string CustomIcon { get; set; } = "⚔️";
-    public override SpawnProperties SpawnProperties { get; set; } = null;
 }
 ```
 
