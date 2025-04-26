@@ -31,10 +31,6 @@ overwatch_system:
   enable_backup: false
 ```
 
-
-## Author
-Created by .Diabelo
-
 ## Support
 For support, please:
 - Open an issue on the [GitHub repository](https://github.com/DiabeloDev/OverwatchSystem/issues)
