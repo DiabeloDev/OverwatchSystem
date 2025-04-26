@@ -35,11 +35,6 @@ overwatch_system:
 To add custom item information to your items, implement the `ICustomItemInfoProvider` interface. Here's a complete example:
 
 ```cs
-using Exiled.API.Features.Attributes;
-using Exiled.API.Features.Spawn;
-using Exiled.CustomItems.API.Features;
-using Moderation;
-
 [CustomItem(ItemType.GunCOM15)]
 public class Test : CustomItem, ICustomItemInfoProvider
 {
