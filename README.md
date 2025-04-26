@@ -30,6 +30,25 @@ overwatch_system:
   enable_logging_auto_update: true
   enable_backup: false
 ```
+## Trans
+'''yaml
+overwatch_system:
+# The language of the plugin
+  language: 'English'
+  none: 'None'
+  moderation_system: 'Moderation System'
+  nickname: 'Nickname'
+  roleplay: 'RP'
+  custom_info: 'Custom Info'
+  id: 'ID'
+  custom_role: 'Custom Role'
+  role: 'Role'
+  last_help: 'Last Help'
+  inventory: 'Inventory'
+  empty: 'Empty'
+  no_permissions: 'No permissions!'
+  no_permissions_description: 'You don''t have permissions to use the moderation system.'
+'''
 
 ## Support
 For support, please:
