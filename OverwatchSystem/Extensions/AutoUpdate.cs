@@ -88,7 +88,6 @@ namespace OverwatchSystem.Extensions
                 }
 
                 var content = await response.Content.ReadAsStringAsync();
-                Log("Successfully retrieved release information", LogLevel.Info);
 
                 var latestVersion = ExtractLatestVersion(content);
                 var downloadUrl = ExtractDownloadUrl(content);
@@ -101,7 +100,7 @@ namespace OverwatchSystem.Extensions
 
                 if (IsNewerVersion(CurrentVersion, latestVersion))
                 {
-                    var updateLines = new[]
+                    string[] updateLines =
                     {
                         $"New version available: {latestVersion}",
                         $"Current version: {CurrentVersion}",

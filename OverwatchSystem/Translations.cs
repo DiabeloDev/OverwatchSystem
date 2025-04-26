@@ -6,7 +6,7 @@ namespace OverwatchSystem
     public class Translations : ITranslation
     {
         public string None { get; set; } = "None";
-        public string ModerationSystem { get; set; } = "Moderation System";
+        public string OverwatchSystem { get; set; } = "Overwatch System";
         public string Nickname { get; set; } = "Nickname";
         public string Roleplay { get; set; } = "RP";
         public string CustomInfo { get; set; } = "Custom Info";

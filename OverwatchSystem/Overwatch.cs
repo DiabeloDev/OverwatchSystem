@@ -261,7 +261,7 @@ namespace OverwatchSystem
                             string rola_color_hex = $"#{(byte)(rola_color.r * 255):X2}{(byte)(rola_color.g * 255):X2}{(byte)(rola_color.b * 255):X2}";
                             
                             StringBuilder sb = new StringBuilder();
-                            sb.AppendLine($"<align=left><color=#4682B4><b>{translations.ModerationSystem}</b></color>\n");
+                            sb.AppendLine($"<align=left><color=#4682B4><b>{translations.OverwatchSystem}</b></color>\n");
                             sb.AppendLine($"<color=#D3D3D3>👤</color><color=#A9A9A9>{translations.Nickname}:</color> <b><color=#FFFFFF>{nickname}</color></b>");
                             if (!string.IsNullOrWhiteSpace(nickname_rp) && nickname_rp != translations.None && nickname_rp != nickname)
                                 sb.AppendLine($"<color=#D8BFD8>🎭</color><color=#A9A9A9>{translations.Roleplay}:</color> <color=#F0F0F0>{nickname_rp}</color>");
