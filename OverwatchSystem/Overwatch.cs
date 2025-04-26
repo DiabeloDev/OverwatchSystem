@@ -107,7 +107,7 @@ namespace OverwatchSystem
             {
                 if (ev?.Player == null || ev?.NewTarget == null)
                 {
-                    Log.Warn("OnSpectating: Player or target is null");
+                    Log.Debug("OnSpectating: Player or target is null");
                     return;
                 }
 
@@ -164,7 +164,6 @@ namespace OverwatchSystem
             {
                 if (ev?.Player == null)
                 {
-                    Log.Warn("OnPlayerLeft: Player is null");
                     return;
                 }
 
@@ -182,7 +181,6 @@ namespace OverwatchSystem
             {
                 if (ev?.Player == null)
                 {
-                    Log.Warn("OnRoleChanged: Player is null");
                     return;
                 }
 
@@ -203,7 +201,6 @@ namespace OverwatchSystem
             {
                 if (player == null)
                 {
-                    Log.Warn("RemoveHint: Player is null");
                     return;
                 }
 
@@ -231,7 +228,6 @@ namespace OverwatchSystem
         {
             if (player == null || hint == null || perms == null)
             {
-                Log.Warn("ShowWarns: Player, hint or permissions is null");
                 yield break;
             }
 
@@ -245,7 +241,6 @@ namespace OverwatchSystem
                     {
                         if (target == null)
                         {
-                            Log.Warn("ShowWarns: Target is null");
                             continue;
                         }
 
@@ -317,13 +312,11 @@ namespace OverwatchSystem
             {
                 if (player == null)
                 {
-                    Log.Warn("ShowInventory: Player is null");
                     return;
                 }
 
                 if (sb == null)
                 {
-                    Log.Warn("ShowInventory: StringBuilder is null");
                     return;
                 }
 
