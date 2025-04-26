@@ -53,16 +53,10 @@ overwatch_system:
 To add custom item information to your items, implement the `ICustomItemInfoProvider` interface. Here's a complete example:
 
 ```cs
-[CustomItem(ItemType.GunCOM15)]
 public class Test : CustomItem, ICustomItemInfoProvider
 {
-    public override uint Id { get; set; } = 1;
-    public override string Name { get; set; } = "TEST";
-    public override string Description { get; set; } = "TEST";
-    public override float Weight { get; set; } = 1f;
     public string AdditionalInfo { get; set; } = "TEST";
     public string CustomIcon { get; set; } = "⚔️";
-    public override SpawnProperties SpawnProperties { get; set; } = null;
 }
 ```
 
