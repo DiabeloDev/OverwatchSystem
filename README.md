@@ -1,4 +1,3 @@
-
 [![downloads](https://img.shields.io/github/downloads/DiabeloDev/OverwatchSystem/total?style=for-the-badge&logo=icloud&color=%233A6D8C)](https://github.com/diabelo/OverwatchSystem/releases/latest)
 ![Latest](https://img.shields.io/github/v/release/DiabeloDev/OverwatchSystem?style=for-the-badge&label=Latest%20Release&color=%23D91656)
 
@@ -6,8 +5,9 @@
 
 A comprehensive overwatch system plugin for SCP: Secret Laboratory servers.
 
-## Minimum Requirements
+## Requirements
 - EXILED Framework v9.5.1 or higher
+- [UncomplicatedCustomRoles](https://github.com/UncomplicatedCustomServer/UncomplicatedCustomRoles) **>= 6.0.0**  
 
 ## Features
 - Advanced overwatch system implementation
@@ -30,11 +30,10 @@ overwatch_system:
   enable_logging_auto_update: true
   enable_backup: false
 ```
+
 ## Translations
 ```yaml
 overwatch_system:
-# The language of the plugin
-  language: 'English'
   none: 'None'
   moderation_system: 'Moderation System'
   nickname: 'Nickname'
@@ -48,6 +47,23 @@ overwatch_system:
   empty: 'Empty'
   no_permissions: 'No permissions!'
   no_permissions_description: 'You don''t have permissions to use the moderation system.'
+```
+
+## Adding ICustomItemInfoProvider to Custom Items
+To add custom item information to your items, implement the `ICustomItemInfoProvider` interface. Here's a complete example:
+
+```cs
+[CustomItem(ItemType.GunCOM15)]
+public class Test : CustomItem, ICustomItemInfoProvider
+{
+    public override uint Id { get; set; } = 1;
+    public override string Name { get; set; } = "TEST";
+    public override string Description { get; set; } = "TEST";
+    public override float Weight { get; set; } = 1f;
+    public string AdditionalInfo { get; set; } = "TEST";
+    public string CustomIcon { get; set; } = "⚔️";
+    public override SpawnProperties SpawnProperties { get; set; } = null;
+}
 ```
 
 ## Support
