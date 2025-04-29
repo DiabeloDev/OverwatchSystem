@@ -250,11 +250,6 @@ namespace OverwatchSystem
                             string nickname = target.Nickname;
                             string nickname_rp = string.IsNullOrEmpty(target.CustomName) ? translations.None : target.CustomName;
                             string cinfo = string.IsNullOrEmpty(target.CustomInfo) ? translations.None : target.CustomInfo;
-                            string custom_rola = translations.None;
-                            if (target.TryGetSummonedInstance(out SummonedCustomRole role))
-                            {
-                                custom_rola = role.Role.Name;
-                            }
                             RoleTypeId rola = target.Role.Type;
                             
                             Color rola_color = target.Role.Color;
@@ -268,7 +263,6 @@ namespace OverwatchSystem
                             if (!string.IsNullOrWhiteSpace(cinfo) && cinfo != translations.None)
                                 sb.AppendLine($"<color=#A9A9A9>🔎</color><color=#A9A9A9>{translations.CustomInfo}:</color> <color=#F0F0F0>{cinfo}</color>");
                             sb.AppendLine($" <color=#FFFFE0>🆔</color><color=#A9A9A9>{translations.Id}:</color> <color=#FFFFFF>{Id}</color>");
-                            sb.AppendLine($"<color=#FFFFE0>\ud83d\udc68</color><color=#A9A9A9>{translations.CustomRole}:</color> <color=#FFFFFF>{custom_rola}</color>");
                             sb.AppendLine($" <color={rola_color_hex}>⚜️ {translations.Role}: {rola}</color>");
                             sb.AppendLine($"🎽<color=#A9A9A9>{translations.Inventory}:</color>");
                             ShowInventory(target, sb);
