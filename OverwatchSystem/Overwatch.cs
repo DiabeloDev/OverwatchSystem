@@ -10,8 +10,6 @@ using HintServiceMeow.Core.Models.Hints;
 using HintServiceMeow.Core.Utilities;
 using InventorySystem.Items;
 using PlayerRoles;
-using UncomplicatedCustomRoles.API.Features;
-using UncomplicatedCustomRoles.Extensions;
 using UnityEngine;
 using System.Collections.Concurrent;
 using Exiled.Events.EventArgs.Server;
@@ -414,7 +412,7 @@ namespace OverwatchSystem
                             {
                                 customIcon = provider.CustomIcon;
                             }
-                            sb.AppendLine($"    {customIcon} {customName} <color=#C0C0C0>{GetCustomItemAdditionalInfo(customItem, item)}</color>");
+                            sb.AppendLine($"    {customIcon} {customName} <color=#C0C0C0>{GetCustomItemAdditionalInfo(customItem)}</color>");
                         }
                         else
                         {
@@ -434,7 +432,7 @@ namespace OverwatchSystem
             }
         }
 
-        private static string GetCustomItemAdditionalInfo(CustomItem customItem, Item item)
+        private static string GetCustomItemAdditionalInfo(CustomItem customItem)
         {
             if (customItem == null) return "";
             
