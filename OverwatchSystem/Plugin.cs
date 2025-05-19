@@ -24,7 +24,6 @@ namespace OverwatchSystem
             Instance = null;
             Overwatch.Unregister();
             base.OnDisabled();
-            
         }
     }
 }
