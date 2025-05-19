@@ -3,7 +3,7 @@
 
 # Overwatch System for EXILED
 
-A comprehensive overwatch system plugin for SCP: Secret Laboratory servers.
+A comprehensive overwatch system plugin for SCP: Secret Laboratory.
 
 ## Requirements
 - [EXILED](https://github.com/ExSLMod-Team/EXILED) v9.6.0 or higher
