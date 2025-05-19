@@ -8,7 +8,6 @@ A comprehensive overwatch system plugin for SCP: Secret Laboratory servers.
 ## Requirements
 - EXILED Framework v9.5.1 or higher
 - [HintServiceMeow](https://github.com/MeowServer/HintServiceMeow)
-- [UncomplicatedCustomRoles](https://github.com/UncomplicatedCustomServer/UncomplicatedCustomRoles) **>= 6.0.0**
 - Newtonsoft.Json
 
 ## Installation
@@ -38,7 +37,6 @@ overwatch_system:
   id: 'ID'
   custom_role: 'Custom Role'
   role: 'Role'
-  last_help: 'Last Help'
   inventory: 'Inventory'
   empty: 'Empty'
   no_permissions: 'No permissions!'
