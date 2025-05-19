@@ -107,7 +107,6 @@ namespace OverwatchSystem.Extensions
                         autoUpdate
                             ? "Automatic update is enabled. Starting update process..."
                             : "Automatic update is disabled. Please download and install the update manually.",
-                        $"Download URL: {downloadUrl}"
                     };
                     LogInBox(updateLines, LogLevel.Warn);
 
@@ -164,14 +163,24 @@ namespace OverwatchSystem.Extensions
             {
                 var obj = JObject.Parse(json);
                 var assets = obj["assets"] as JArray;
-                
+
                 if (assets == null || assets.Count == 0)
                 {
                     Log("No assets found in the release", LogLevel.Error);
                     return null;
                 }
+                
+                foreach (var asset in assets)
+                {
+                    var name = asset["name"]?.ToString();
+                    if (name != null && name.Equals("OverwatchSystem.dll", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return asset["browser_download_url"]?.ToString();
+                    }
+                }
 
-                return assets[0]["browser_download_url"]?.ToString();
+                Log("No matching 'OverwatchSystem.dll' file found in the release assets.", LogLevel.Error);
+                return null;
             }
             catch (Exception ex)
             {
