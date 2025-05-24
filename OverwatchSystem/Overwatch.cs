@@ -260,7 +260,7 @@ namespace OverwatchSystem
                                 sb.AppendLine($"<color=#D8BFD8>🎭</color><color=#A9A9A9>{translations.Roleplay}:</color> <color=#F0F0F0>{nickname_rp}</color>");
                             if (!string.IsNullOrWhiteSpace(cinfo) && cinfo != translations.None)
                                 sb.AppendLine($"<color=#A9A9A9>🔎</color><color=#A9A9A9>{translations.CustomInfo}:</color> <color=#F0F0F0>{cinfo}</color>");
-                            sb.AppendLine($" <color=#FFFFE0>🆔</color><color=#A9A9A9>{translations.Id}:</color> <color=#FFFFFF>{Id}</color>");
+                            sb.AppendLine($"<color=#FFFFE0>🆔</color><color=#A9A9A9>{translations.Id}:</color> <color=#FFFFFF>{Id}</color>");
                             sb.AppendLine($" <color={rola_color_hex}>⚜️ {translations.Role}: {rola}</color>");
                             sb.AppendLine($"🎽<color=#A9A9A9>{translations.Inventory}:</color>");
                             ShowInventory(target, sb);
@@ -342,6 +342,7 @@ namespace OverwatchSystem
                             case ItemType.GunFSP9:
                             case ItemType.GunShotgun:
                             case ItemType.GunCom45:
+                            case ItemType.GunSCP127:    
                                 icon = "🔫";
                                 break;
                             case ItemType.KeycardScientist:

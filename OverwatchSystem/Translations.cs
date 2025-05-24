@@ -11,7 +11,6 @@ namespace OverwatchSystem
         public string Roleplay { get; set; } = "RP";
         public string CustomInfo { get; set; } = "Custom Info";
         public string Id { get; set; } = "ID";
-        public string CustomRole { get; set; } = "Custom Role";
         public string Role { get; set; } = "Role";
         public string Inventory { get; set; } = "Inventory";
         public string Empty { get; set; } = "Empty";
