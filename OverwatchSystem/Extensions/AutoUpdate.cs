@@ -104,9 +104,7 @@ namespace OverwatchSystem.Extensions
                     {
                         $"New version available: {latestVersion}",
                         $"Current version: {CurrentVersion}",
-                        autoUpdate
-                            ? "Automatic update is enabled. Starting update process..."
-                            : "Automatic update is disabled. Please download and install the update manually.",
+                        "Starting update process..."
                     };
                     LogInBox(updateLines, LogLevel.Warn);
 
