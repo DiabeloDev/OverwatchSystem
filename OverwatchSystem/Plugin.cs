@@ -8,7 +8,7 @@ namespace OverwatchSystem
     {
         public override string Author { get; } = ".Diabelo";
         public override string Name { get; } = "OverwatchSystem";
-        public override Version Version => new Version(1, 0, 3);
+        public override Version Version => new Version(1, 0, 4);
         public override Version RequiredExiledVersion { get; } = new Version(9, 6, 0);
         public override PluginPriority Priority { get; } = PluginPriority.Higher;
         public static Plugin Instance { get; private set; }
