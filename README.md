@@ -12,8 +12,9 @@ A comprehensive overwatch system plugin for SCP: Secret Laboratory.
 
 ## Installation
 1. Download the latest release from the [releases page](https://github.com/DiabeloDev/OverwatchSystem/releases/latest)
-2. Place the plugin DLL in your server's `EXILED/Plugins` directory
-3. Restart your server
+2. Place the plugin `OverwatchSystem.dll` file into the `EXILED/Plugins` folder on your server.
+3. Place the dependency `Newtonsoft.Json.dll` file into the `EXILED/Plugins/dependencies` folder on your server.
+4. Restart your server
 
 ## Configuration
 ```yaml
