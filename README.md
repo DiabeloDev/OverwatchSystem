@@ -48,7 +48,7 @@ overwatch_system:
 To add custom item information to your items, implement the `ICustomItemInfoProvider` interface. Here's a complete example:
 
 ```cs
-public class Test : CustomItem, ICustomItemInfoProvider
+public class Test : ICustomItemInfoProvider
 {
     public string AdditionalInfo { get; set; } = "TEST";
     public string CustomIcon { get; set; } = "⚔️";
