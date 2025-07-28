@@ -36,7 +36,6 @@ overwatch_system:
   roleplay: 'RP'
   custom_info: 'Custom Info'
   id: 'ID'
-  custom_role: 'Custom Role'
   role: 'Role'
   inventory: 'Inventory'
   empty: 'Empty'
