@@ -6,7 +6,7 @@
 A comprehensive overwatch system plugin for SCP: Secret Laboratory.
 
 ## Requirements
-- [EXILED](https://github.com/ExMod-Team/EXILED) v9.6.1 or higher
+- [EXILED](https://github.com/ExMod-Team/EXILED) v9.8.1 or higher
 - [HintServiceMeow](https://github.com/MeowServer/HintServiceMeow) v5.4.0 or higher
 - Newtonsoft.Json
 
