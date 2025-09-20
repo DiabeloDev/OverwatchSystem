@@ -9,7 +9,5 @@ namespace OverwatchSystem
         public bool Debug { get; set; } = false;
         [Description("Auto Update:")]
         public bool AutoUpdate { get; set; } = true;
-        public bool EnableLoggingAutoUpdate { get; set; } = true;
-        public bool EnableBackup { get; set; } = false;
     }
 }
