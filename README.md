@@ -23,8 +23,6 @@ overwatch_system:
   debug: false
   # Auto Update:
   auto_update: true
-  enable_logging_auto_update: true
-  enable_backup: false
 ```
 
 ## Translations
