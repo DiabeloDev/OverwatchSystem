@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="ExMod.Exiled" Version="9.14.2" />
-    <PackageReference Include="HintServiceMeow-Exiled" Version="5.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
@@ -22,6 +21,9 @@
 	</Reference>  
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>..\..\..\..\source\repos\EXILED_REFERENCES\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>  
+    <Reference Include="HintServiceMeow">
+      <HintPath>..\..\..\..\source\repos\EXILED_REFERENCES\HintServiceMeow-Exiled.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\source\repos\EXILED_REFERENCES\UnityEngine.dll</HintPath>
